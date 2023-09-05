@@ -1,0 +1,149 @@
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="crop.css" />
+
+    <title>IMAGE RESIZER</title>
+
+</head>
+
+<body>
+    <div class="header">
+        <div><i class="gg-head"></i></div>
+        <div>
+            <a href="index.html">Image Resizer.com</a>
+        </div>
+        <ul class="list">
+            <li>
+                <a class="headlist" href="index.html">
+                    <div class="headdlist1">
+                        <span>Image Shrinker</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="headlist" href="cropindex.html">
+                    <div class="headdlist1">
+                        <span>Image Crop</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="headlist" href="flipindex.html">
+                    <div class="headdlist1">
+                        <span>Image Flip</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="hr01"></div>
+
+    <div class="fullborder">
+        <div class="mainbody">
+            <div class="resize">
+                <a href="index1.html">
+                    <button id="button1">
+                        <i class="gg-resize"></i>
+                        <span style="font-size:21px; margin-left: 5px;">Resize</span>
+                    </button>
+                </a>
+            </div>
+            <div class="crop active">
+                <a href="crop1.html">
+                    <button id="button2">
+                        <i class="gg-crop"></i>
+                        <span style="font-size:21px; margin-left: 5px;">Crop</span>
+                    </button>
+                </a>
+            </div>
+            <div class="fliprotate active">
+                <a href="flip1.html">
+                    <button id="button3">
+                        <i class="gg-flip"></i>
+                        <span style="font-size:21px; margin-left: 5px;">Fliprotate</span>
+                    </button>
+                </a>
+            </div>
+            <div class="hr"></div>
+            <div class="text1">Crop Settings</div>
+            <div class="col" id="frm">
+                <div class="content">
+
+                    <div class="short-content-two">
+                        <div class="text0">Enter Sizes</div>
+                        <br>
+                        <div class="text12">Height</div>
+                        <div class="height">
+                            <input onClick="test()" type="number" id="input-height" placeholder="enter height"
+                                value="400" onchange="upload(this)">
+                        </div>
+                        <div class="text01">Width</div>
+                        <div class="width">
+                            <input onClick="test()" type="number" id="input-width" placeholder="enter Width" value="400"
+                                onchange="upload(this)">
+                        </div>
+                        <div class="hr1"></div>
+                        <div class="select type">
+                            <select id="input-type" onchange="upload(this)">
+                                <option value="">Select aspect ratio</option>
+                                <option value="image/jpeg">Jpeg</option>
+                                <option value="image/png">png</option>
+                                <option value="image/jpg">jpg</option>
+                            </select>
+                        </div>
+                        <div><canvas id="canvas"></canvas></div>
+                        <a href="" class="btn download hide">
+                            <center>Crop</center>
+                        </a>
+                        <a href="" class="btn1 download hide">
+                            <center>Undo</center>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="view">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <center><img id="preview" class="resize-image" height="400px" width="400px" src="img/image.jpg"
+                alt="thumbnail"></img></center>
+    </div>
+    
+    <script>
+        async function upload(value) {
+            console.log("value", value.value)
+            let ele = document.getElementById('preview')
+            ele.setAttribute('height', value.value)
+            ele.setAttribute('width', value.value)
+        }
+        window.onload = function () {
+            set()
+        }
+        function set() {
+            const thumbnail = localStorage.getItem('thumbnail');
+
+            const previewImage = document.getElementById('preview');
+            console.log(previewImage, previewImage.src);
+            if (thumbnail) {
+                console.log("if");
+                previewImage.src = thumbnail;
+            } else {
+                console.log("else");
+                previewImage.src = 'https://m.media-amazon.com/images/I/51JyAXaBz3L.j'
+            }
+        }
+    </script>
+</body>
+
+</html>

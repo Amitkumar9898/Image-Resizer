@@ -1,0 +1,101 @@
+
+
+
+
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>IMAGE RESIZER</title>
+</head>
+
+<body>
+    <div class="header">
+        <div><i class="gg-head"></i></div>
+        <div>Image Resizer.com</div>
+        <ul class="list">
+            <li>
+                <a class="headlist" href="index.html">
+                    <div class="headdlist1">
+                        <span>Image Resize</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="headlist" href="cropindex.html">
+                    <div class="headdlist1">
+                        <span>Image Crop</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="headlist" href="flipindex.html">
+                    <div class="headdlist1">
+                        <span>Image Flip</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="hr01"></div>
+    <div class="center">
+        <h1>
+            <span class="text">CROP IMAGE</span>
+        </h1>
+        <p>
+            <span class="text">Quickly crop image files online for free!</span>
+        </p>
+    </div>
+    <div class="main">
+        <div class="center-col">
+            <div class="selected">
+                <div class="space">
+                    <div class="selectimage">
+                        <center><i class="gg-image"></i></center>
+                        <br>
+                        <label for="input-file">Select Image</label>
+                        <input type="file" class="image-input" accept="image/jpeg,image/png" id="input-file"
+                            onchange="upload(this.files)">
+                    </div>
+                </div>
+            </div>
+            <div class="text1">
+                <span class="text">or, drag and drop in image here</span>
+            </div>
+        </div>
+    </div>
+    <div class="hr2"></div>
+    <div class="footer">Made with ❤️ Essentia </div>
+
+    <script>
+        async function upload(value) {
+            console.log(value)
+            bannerImage = value[0]
+            const reader = new FileReader();
+            reader.readAsDataURL(bannerImage);
+            await reader.addEventListener('load', () => {
+                localStorage.setItem('thumbnail', reader.result);
+            });
+            window.location.href = "http://127.0.0.1:5500/image-resizer/crop1.html";
+        }
+        const imageInputs = document.querySelectorAll('.image-input');
+        const imagePreviews = document.querySelectorAll('.image-preview');
+        imageInputs.forEach((imageInput, index) => {
+            imageInput.addEventListener('change', () => {
+                const file = imageInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', () => {
+                        imagePreviews[index].setAttribute('src', reader.result);
+                    });
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html
